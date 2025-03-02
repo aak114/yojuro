@@ -1,5 +1,3 @@
-// types.ts
-
 // Profiles
 export interface Profile {
     user_id: string;
@@ -19,44 +17,34 @@ export interface Profile {
   export interface Workout {
     workout_id: string;
     reps: number;
-    duration: number;
     created_at: string;
     updated_at: string;
     exercise_type: string;
     sequence_id: string;
     workout_order: number;
-    pause_duration: number;
   }
   
-  // Sequences
+  // Sequences (linked to Challenge now)
   export interface Sequence {
     sequence_id: string;
-    program_id: string;
+    challenge_id: string;  // Replaced program_id with challenge_id
     created_at: string;
     updated_at: string;
     sequence_dates: string[];  // Array of dates in string format
+    duration: number | null;
   }
   
-  // Programs
-  export interface Program {
-    program_id: string;
-    name: string;
-    created_at: string;
-    updated_at: string;
-  }
-  
-  // Challenges
+  // Challenges 
   export interface Challenge {
     challenge_id: string;
-    start_date: string;
-    end_date: string;
+    start_date: string;  
+    end_date: string;    
     entry_fee: number;
     created_at: string;
     updated_at: string;
-    status: string;
+    status: "draft" | "published" | "active" | "completed";
     name: string;
     description: string;
-    program_id: string;
   }
   
   // Participants
